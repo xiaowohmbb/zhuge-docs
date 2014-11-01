@@ -1,0 +1,12 @@
+site_name: 开发者中心
+site_url: zhuge.io
+site_description: 移动,分析，诸葛，大数据
+site_favicon: favicon.ico
+
+repo_url: https://github.com/zyzapai/zhugedocs/
+
+pages:
+- ['index.md', '首页']
+- ['sdks/android.md','开发文档', 'Android SDK接入指南']
+
+copyright: Copyright &copy; 2014 <a href="http://www.37degree.com/">北京乐享天下科技有限公司</a>
