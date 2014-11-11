@@ -1,6 +1,7 @@
-# 欢迎使用诸葛数据分析
+# 欢迎使用
 
 
 ## [Android SDK 开发指南](sdks/android.md)
+## [Javascript SDK 开发指南](sdks/javascript.md)
 
 

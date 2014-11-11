@@ -6,6 +6,8 @@ repo_url: https://github.com/zyzapai/zhugedocs/
 
 pages:
 - ['index.md', '首页']
-- ['sdks/android.md','开发文档', 'Android SDK接入指南']
+- ['sdks/android.md','开发文档', 'Android SDK开发指南']
+- ['sdks/javascript.md','开发文档', 'Javascript SDK开发指南']
+
 
 copyright: Copyright &copy; 2014 <a href="http://www.37degree.com/">北京乐享天下科技有限公司</a>
