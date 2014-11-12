@@ -108,7 +108,7 @@ app_key 和 channel 也可以在代码初始化时配置。
 	properties.put("gender", "male");
 	properties.put("email", "gump@37degree.com");
 	properties.put("company", "37degree");
-  ZhugeSDK.identify("1231", properties);
+    ZhugeSDK.identify("1231", properties);
 
 #### 预定义的属性：
 
@@ -128,6 +128,21 @@ app_key 和 channel 也可以在代码初始化时配置。
 |location   | 地域，如北京|
 
  **长度限制**:Key最长支持25个字符，Value最长支持255个字符，一个汉字按3个字符计算。
+
+### 自定义事件
+
+自定义事件用于记录用户行为，例如购买道具、点击某个按钮等用户行为都可以通过一个事件来记录，
+还可以通过事件的属性来描述发生的场景或具体细节。
+
+例如,某游戏用户购买道具的行为可以通过下面代码记录。
+
+          HashMap<String, Object> properties = new HashMap<String, Object>();
+          properties.put("道具", "sword");
+          properties.put("级别", 3);
+          properties.put("价格", 9.99);
+          ZhugeSDK.onEvent(context, "购买道具", properties);
+
+**长度限制**:属性名最长支持25个字符，值最长支持255个字符。
 
 ### 系统配置
 
