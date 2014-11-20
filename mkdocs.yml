@@ -2,7 +2,7 @@ site_name: 诸葛开发者中心
 site_url: zhuge.io
 site_favicon: favicon.ico
 
-repo_url: https://github.com/zhugesdk/docs/
+repo_url: https://github.com/zhugesdk/zhuge-docs/
 
 pages:
 - ['index.md', '首页']
