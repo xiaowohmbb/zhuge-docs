@@ -1,0 +1,23 @@
+安装脚本：
+	1.确保安装python,pip
+		$ python --version
+		Python 2.7.2
+		$ pip --version
+		pip 1.5.2	
+	2.安装mkdocs
+		pip install mkdocs
+	3.确保安装git,并从github上下载最新的markdown文件
+		git clone https://github.com/zhugesdk/zhuge-docs/
+	4.编译markdown文件成html
+		cd zhuge-docs
+		mkdocs build --clean
+		html文件生成到 site文件夹
+	5.确保安装nginx,配置docs.zhuge.io指向zhuge-docs/site文件夹
+
+
+代码发布脚本:
+	1.更新代码
+		cd zhuge-docs
+		git pull
+	2.编译
+		mkdocs build --clean

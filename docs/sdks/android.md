@@ -45,8 +45,8 @@ app_key 和 channel 也可以在代码初始化时配置。
             ……
             <activity ……/>
     	</application>
-    	<meta-data android:value="{{APP_KEY}}" android:name="ZHUGE_APPKEY" />
-		<meta-data android:value="{{CHANNEL_ID}}" android:name="ZHUGE_CHANNEL"/>
+    	<meta-data android:value="YOUR_APP_KEY" android:name="ZHUGE_APPKEY" />
+		<meta-data android:value="CHANNEL_ID" android:name="ZHUGE_CHANNEL"/>
     </manifest>
     
   	
