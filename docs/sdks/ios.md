@@ -21,7 +21,7 @@
     [[Zhuge sharedInstance] startWithAppKey:@"Your App Key"];
 }
 ```
-如果您需要修改SDK的默认设置，如打开日志打印、设置上报策略等时，一定要在startWithAppKey前执行。参考代码：
+如果您需要修改SDK的默认设置，如打开日志打印、设置上报策略等时，一定要在`startWithAppKey`前执行。参考代码：
 ```objc
     Zhuge *zhuge = [Zhuge sharedInstance];
 
@@ -59,7 +59,7 @@
     [[Zhuge sharedInstance] track:@"购物" properties: @{@"商家":@"京东"}];
 ```
 
-## 跟踪页面
+## 页面访问
 您可以通过在每个页面的`viewWillAppear`方法调用`pageStart:`、`viewWillDisappear`方法调用`pageEnd:`来记录页面访问。
 ```objc
 - (void)viewWillAppear:(BOOL)animated {
@@ -77,3 +77,26 @@
 }
 ```
 ## SDK设置
+默认每天从官网下载一次系统配置，如果想在代码中修改，先关闭从线上更新配置。
+在调用`startWithAppKey`方法前，可以修改SDK的默认设置。
+ 1. 关闭从官网自动下载系统设置，
+ ```objc
+    // 关闭从线上更新配置
+    [zhuge.config setIsOnlineConfigEnabled:NO]; // 默认开启
+```
+ 2. 修改发送策略，默认是启动时发送，方法如下：
+```objc
+    Zhuge *zhuge = [Zhuge sharedInstance];
+
+    // 设置发送策略
+    [zhuge.config setPolicy:SEND_REALTIME]; // 实时发送
+
+    // 开启行为追踪
+    [zhuge startWithAppKey:@"0a824f87315749a49c16fcbaea277707"];
+```
+ 2. 打开SDK日志
+ ```objc
+    // 打开SDK日志打印
+    [zhuge.config setIsLogEnabled:YES]; // 默认关闭
+```
+
