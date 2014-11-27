@@ -78,7 +78,7 @@
 ```
 ## SDK设置
 在调用`startWithAppKey`方法前，可以修改SDK的默认设置。
- 1. 关闭从官网自动下载系统设置  
+ 1 . 关闭从官网自动下载系统设置  
     默认每天从官网下载一次系统配置，如果想在代码中修改，先关闭从线上更新配置。
     建议开发调试时关闭，发布后开启。
 ```objc
@@ -91,17 +91,17 @@
     [zhuge startWithAppKey:@"0a824f87315749a49c16fcbaea277707"];
 ```
 
- 2. 修改发送策略，默认是启动时发送，方法如下：
+ 2 . 修改发送策略，默认是启动时发送，方法如下：
 ```objc
     [zhuge.config setPolicy:SEND_REALTIME]; // 实时发送
 ```
 
- 3. 打开SDK日志 
+ 3 . 打开SDK日志 
 ```objc
     [zhuge.config setIsLogEnabled:YES]; // 默认关闭
 ```
 
- 4. 自定义版本和渠道 
+ 4 . 自定义版本和渠道 
 ```objc
     [zhuge.config setAppVersion:@"0.9-beta"]; // 默认是info.plist中CFBundleShortVersionString值
     [zhuge.config setChannel:@"My App Store"]; // 默认是@"App Store"
