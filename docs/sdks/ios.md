@@ -36,6 +36,44 @@
 ```
 
 ## 识别用户身份
+您可以通过调用`identify:properties:`来记录用户身份信息。
+```objc
+    NSMutableDictionary *user = [NSMutableDictionary dictionary];
+    user[@"name"] = @"zhuge";
+    user[@"gender"] = @"男";
+    user[@"birthday"] = @"2014/11/11";
+    user[@"avatar"] = @"http://tp2.sinaimg.cn/2885710157/180/5637236139/1";
+    user[@"email"] = @"hello@zhuge.io";
+    user[@"mobile"] = @"18901010101";
+    user[@"qq"] = @"91919";
+    user[@"weixin"] = @"121212";
+    user[@"weibo"] = @"122222";
+    user[@"location"] = @"北京朝阳区";
+    user[@"公司"] = @"37degree";
+    [[Zhuge sharedInstance] identify:@"1234" properties:user];
+```
+
 ## 跟踪事件
+您可以通过调用`track:properties:`来跟踪自定义事件。
+```objc
+    [[Zhuge sharedInstance] track:@"购物" properties: @{@"商家":@"京东"}];
+```
+
 ## 跟踪页面
+您可以通过在每个页面的`viewWillAppear`方法调用`pageStart:`、`viewWillDisappear`方法调用`pageEnd:`来记录页面访问。
+```objc
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    //页面开始
+    [[Zhuge sharedInstance] pageStart:@"发现"];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    //页面结束
+    [[Zhuge sharedInstance] pageEnd:@"发现"];
+}
+```
 ## SDK设置
