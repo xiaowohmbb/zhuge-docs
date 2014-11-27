@@ -13,7 +13,29 @@
  2. 诸葛SDK默认采用ARC，如果您的项目没有采用ARC，您需要在编译(`Build Phases -> Compile Sources`)时，为每个Zhuge文件标识为`-fobj-arc`。
 
 ## 初始化
+在集成诸葛SDk时，您首先需要用AppKey启动。Appkey是在官网上创建项目时生成。
+```objc
+#import <Zhuge/Zhuge.h>
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [[Zhuge sharedInstance] startWithAppKey:@"Your App Key"];
+}
+```
+如果您需要修改SDK的默认设置，如打开日志打印、设置上报策略等时，一定要在startWithAppKey前执行。参考代码：
+```objc
+    Zhuge *zhuge = [Zhuge sharedInstance];
+
+    // 设置上报策略
+    [zhuge.config setPolicy:SEND_REALTIME]; // 实时发送
+
+    // 打开SDK日志打印
+    [zhuge.config setIsLogEnabled:YES]; // 默认关闭
+
+    // 开启行为追踪
+    [zhuge startWithAppKey:@"0a824f87315749a49c16fcbaea277707"];
+```
+
 ## 识别用户身份
 ## 跟踪事件
 ## 跟踪页面
-## 系统设置
+## SDK设置
