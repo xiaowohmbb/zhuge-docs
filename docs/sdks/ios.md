@@ -1,15 +1,15 @@
 # 诸葛IOS SDK开发指南
 
 ## 安装SDK
-最简单的安装方式是使用[CocoaPods](http://cocoapods.org/)
- 1. 安装CocoaPod `gem install cocoapods`
- 2. 项目目录下创建`Podfile`文件，并加入一行代码: `pod 'Zhuge'`
+最简单的安装方式是使用[CocoaPods](http://cocoapods.org/)  
+ 1. 安装CocoaPod `gem install cocoapods`  
+ 2. 项目目录下创建`Podfile`文件，并加入一行代码: `pod 'Zhuge'`  
  3. 项目目录下执行`pod install`，CocoaPods会自动安装Zhuge SDK，并生成工作区文件*.xcworkspace，打开该工作区即可。
 
 你也可以把`Zhuge`目录下的文件直接copy到项目下来安装。
 
 ## 兼容性和ARC
- 1. 诸葛SDK仅支持iOS 6.0以上系统，您需要使用Xcode 5和IOS 7.0以上的SDK进行编译，如果您的版本较低，强烈建议升级。
+ 1. 诸葛SDK仅支持iOS 6.0以上系统，您需要使用Xcode 5和IOS 7.0以上的SDK进行编译，如果您的版本较低，强烈建议升级。  
  2. 诸葛SDK默认采用ARC，如果您的项目没有采用ARC，您需要在编译(`Build Phases -> Compile Sources`)时，为每个Zhuge文件标识为`-fobj-arc`。
 
 ## 初始化
@@ -32,7 +32,7 @@
     [zhuge.config setIsLogEnabled:YES]; // 默认关闭
 
     // 开启行为追踪
-    [zhuge startWithAppKey:@"0a824f87315749a49c16fcbaea277707"];
+    [zhuge startWithAppKey:@"Your App Key"];
 ```
 
 ## 识别用户身份
@@ -52,6 +52,24 @@
     user[@"公司"] = @"37degree";
     [[Zhuge sharedInstance] identify:@"1234" properties:user];
 ```
+#### 预定义的属性：
+
+为了便于分析和页面显示，我们抽取了一些共同的属性，要统计以下数据时，可按照下面格式填写。 
+
+|属性Key     | 说明        | 
+|--------|-------------|
+|name    | 名称|
+|gender  | 性别(值:男,女)|
+|birthday| 生日(格式: yyyy/MM/dd)|
+|avatar   | 头像地址|
+|email   | 邮箱|
+|mobile   | 手机号|
+|qq      | QQ账号|
+|weixin  | 微信账号|
+|weibo   | 微博账号|
+|location   | 地域，如北京|
+
+**长度限制**:Key最长支持25个字符，Value最长支持255个字符，一个汉字按3个字符计算。
 
 ## 跟踪事件
 您可以通过调用`track:properties:`来跟踪自定义事件。
@@ -77,7 +95,7 @@
 }
 ```
 ## SDK设置
-在调用`startWithAppKey`方法前，可以修改SDK的默认设置。
+在调用`startWithAppKey`方法前，可以修改SDK的默认设置。  
  1 . 关闭从官网自动下载系统设置  
     默认每天从官网下载一次系统配置，如果想在代码中修改，先关闭从线上更新配置。
     建议开发调试时关闭，发布后开启。

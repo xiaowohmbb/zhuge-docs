@@ -6,8 +6,9 @@ repo_url: https://github.com/zhugesdk/zhuge-docs/
 
 pages:
 - ['index.md', '首页']
-- ['sdks/android.md','开发文档', 'Android SDK开发指南']
-- ['sdks/javascript.md','开发文档', 'Javascript SDK开发指南']
-
+- ['sdks/android.md','SDK集成指南', 'Android']
+- ['sdks/ios.md','SDK集成指南', 'IOS']
+- ['sdks/javascript.md','SDK集成指南', 'Javascript']
+- ['download.md', 'SDK下载']
 
 copyright: Copyright &copy; 2014 <a href="http://www.37degree.com/">北京乐享天下科技有限公司</a>

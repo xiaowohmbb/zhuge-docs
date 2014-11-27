@@ -4,7 +4,7 @@
 集成SDK之前，您首先需要到诸葛官网注册并且添加新应用，添加成功后，会自动获得AppKey。
 
 ### 导入SDK
-从SDK下载页面下载 android版的SDK，并导入到项目中。
+从[SDK下载页面](../download.md)下载最新版的Android SDK，并导入到项目中。
 
 ### 配置 AndroidManifest.xml 文件
 需要添加下面两类配置：  
@@ -85,7 +85,9 @@ app_key 和 channel 也可以在代码初始化时配置。
          ZhugeSDK.init(this); 
          ZhugeSDK.config.setPageStatistics(false);
 ```
-	然后在每个页面中onResume和onPause时调用onPageStart和onPageEnd
+
+然后在每个页面中`onResume`和`onPause`时调用`onPageStart`和`onPageEnd`
+
 ```java
 		public void onResume() {
 		    super.onResume();
@@ -128,7 +130,7 @@ app_key 和 channel 也可以在代码初始化时配置。
 |weibo   | 微博账号|
 |location   | 地域，如北京|
 
- **长度限制**:Key最长支持25个字符，Value最长支持255个字符，一个汉字按3个字符计算。
+**长度限制**:Key最长支持25个字符，Value最长支持255个字符，一个汉字按3个字符计算。
 
 ### 自定义事件
 
