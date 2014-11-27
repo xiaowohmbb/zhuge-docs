@@ -32,8 +32,8 @@ app_key 和 channel 也可以在代码初始化时配置。
 |GET_TASKS        |是|获取用户应用列表，用于统计用户标签|
 
 示例代码：
-
-    <manifest……>
+```xml
+<manifest……>
     	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     	<uses-permission android:name="android.permission.INTERNET" />
@@ -47,26 +47,26 @@ app_key 和 channel 也可以在代码初始化时配置。
     	</application>
     	<meta-data android:value="YOUR_APP_KEY" android:name="ZHUGE_APPKEY" />
 		<meta-data android:value="CHANNEL_ID" android:name="ZHUGE_CHANNEL"/>
-    </manifest>
-    
+</manifest>
+```
   	
 ### 初始化
 
 在程序启动时的Activity中调用init接口。
-
+```java
     public class YourApp extends Application{
     	public void onCreate() {
        		super.onCreate();
         	ZhugeSDK.init(this);
     	}
     }
-  
+```
 
 ### 会话统计
 只有正确集成以下代码，才能统计新增用户、活跃用户、留存用户、启动次数、使用时长等基础数据。
 
 在每个 Activity 的 onResume 和 onPause 方法中调用相应的统计方法。
-
+```java
     public void onResume() {
     	super.onResume();
     	ZhugeSDK.onResume(this);
@@ -75,17 +75,18 @@ app_key 和 channel 也可以在代码初始化时配置。
     	super.onPause();
     	ZhugeSDK.onPause(this);
     }
+```
 
 ### 页面统计
 1. 只有Activity构成的页面时，在上一步已经统计了页面，不需要再单独统计。
 2. 由Activity、Fragment或View的构成的应用  
    首先在初始化后禁用页面自动统计，示例代码 
-   
+```java
          ZhugeSDK.init(this); 
          ZhugeSDK.config.setPageStatistics(false);
-
+```
 	然后在每个页面中onResume和onPause时调用onPageStart和onPageEnd
-
+```java
 		public void onResume() {
 		    super.onResume();
 		    ZhugeSDK.onPageStart(this,"MainPage");
@@ -94,7 +95,7 @@ app_key 和 channel 也可以在代码初始化时配置。
 		    super.onPause();
 		    ZhugeSDK.onPageEnd(this,"MainPage"); 
 		}
-
+```
 
 ### 用户身份识别
 
@@ -102,14 +103,14 @@ app_key 和 channel 也可以在代码初始化时配置。
 这些信息帮助开发者追踪每一个指标背后的用户，对他们进行多维分析与画像，并针对性的进行营销。
 
 示例代码
-
+```java
 	HashMap<String, Object> properties = new HashMap<String, Object>();
 	properties.put("name", "gump");
 	properties.put("gender", "male");
 	properties.put("email", "gump@37degree.com");
 	properties.put("company", "37degree");
     ZhugeSDK.identify("1231", properties);
-
+```
 #### 预定义的属性：
 
 为了便于分析和页面显示，我们抽取了一些共同的属性，要统计以下数据时，可按照下面格式填写。 
@@ -135,12 +136,13 @@ app_key 和 channel 也可以在代码初始化时配置。
 还可以通过事件的属性来描述发生的场景或具体细节。
 
 例如,某游戏用户购买道具的行为可以通过下面代码记录。
-
+```java
           HashMap<String, Object> properties = new HashMap<String, Object>();
           properties.put("道具", "sword");
           properties.put("级别", 3);
           properties.put("价格", 9.99);
           ZhugeSDK.onEvent(context, "购买道具", properties);
+```
 
 **长度限制**:属性名最长支持25个字符，值最长支持255个字符。
 
@@ -153,9 +155,9 @@ app_key 和 channel 也可以在代码初始化时配置。
 调试模式下可记录日志信息，便于开发调试。
 
 示例代码
-
+```java
 	ZhugeSDK.config.setDebug(true);
-
+```
 
 #### 修改上传策略	
 
@@ -170,8 +172,9 @@ app_key 和 channel 也可以在代码初始化时配置。
 
 示例代码
 
+```java
  	ZhugeSDK.config.setUpload_method(ZhugeSDK.config.APP_LAUNCH);
-
+```
 	
 #### 设置会话间隔 
 
@@ -180,8 +183,9 @@ app_key 和 channel 也可以在代码初始化时配置。
 
 示例代码
 
+```java
  	ZhugeSDK.config.setSession_exceed(45);
- 	
+``` 	
  	
 #### 禁止上传数据 
 
@@ -189,6 +193,7 @@ app_key 和 channel 也可以在代码初始化时配置。
 
 示例代码
 
+```java
  	// 禁止收集用户账户
  	ZhugeSDK.config.setDisable_accounts(true);
  	// 禁止收集用户应用列表
@@ -198,4 +203,4 @@ app_key 和 channel 也可以在代码初始化时配置。
  	
  	// 禁止上传所有数据
  	ZhugeSDK.config.setDisable_upload(true);
-
+```
